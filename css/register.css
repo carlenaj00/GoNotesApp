@@ -1,0 +1,77 @@
+@charset "UTF-8";
+/*  
+                                           
+   _____ _       _              _____  _____ _____ 
+  / ___/| (•)   | |           / ____// ____/ ____/  v 4.0.5
+ | (___ | |_  __| | ___ ____ | |    | (___| (___  
+  \___ \| | |/ _` |/ _ / __/ | |     \___ \ ___ \ 
+  ____) | | | (_| |  __\__ \ | |____ ____) |___) |
+ /_____/|_|_|\__,_|\___/___/  \_____/_____/_____/                               
+                                            
+
+*/
+/* CSS RESET */
+
+/* register starts */
+.register .row{
+    align-content: center;
+    padding:5rem;
+    width: 70%;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    background:rgb(238, 238, 238);
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+    border-radius: .5rem;
+  }
+  
+  .register .row .image{
+    flex:1 1 5rem;
+  }
+  
+  .register .row .image img{
+    height: 80%;
+    width: 80%;
+    object-fit: contain;
+    border-radius: .5rem;
+  }
+  
+  .register .row form{
+    flex:1 1 40rem;
+    padding:5rem;
+  }
+  
+  .register .row form .inputBox{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .register .row form .inputBox input, .login .row form textarea{
+    padding:1rem;
+    margin: .5rem 0;
+    font-size: 1.7rem;
+    color:#333;
+    text-transform: none;
+    border:.1rem solid rgba(0,0,0,.3);
+    border-radius: .5rem;
+    width: 65%;
+  }
+  
+  .register .row form textarea{
+    width:100%;
+    resize: none;
+    height:15rem;
+  }
+  
+  .register .row form .btn{
+    background:none;
+    font-weight:bold;
+    text-transform: uppercase;
+  }
+  
+  .register .row form .btn:hover{
+    background:var(--brown);
+  }
+  /* register ends */
+  
