@@ -257,6 +257,17 @@
 <div class="progress-bar blue"></div>
 
 <script>
+	
+  //  MODAL STARTS HERE  //
+  // Get the modal
+  var modal = document.getElementById('id01');
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
   import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js"; 
@@ -323,7 +334,6 @@
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
   });**/
-
   })
 
   signOut.addEventListener('click', (e) => {
@@ -334,18 +344,6 @@
       });
   })
 
-
-  
-  //  MODAL STARTS HERE  //
-  // Get the modal
-  var modal = document.getElementById('id01');
-  
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
   </script>
 		
 </body>
