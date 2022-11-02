@@ -14,30 +14,39 @@
 
 /* register starts */
 .register .row{
-    align-content: center;
-    padding:5rem;
-    width: 70%;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    padding:1rem;
+    width: 50%;
+    box-shadow: 0 .5rem 1rem #94DD26;
     background:rgb(238, 238, 238);
     display: flex;
     flex-wrap: wrap;
     gap:1.5rem;
     border-radius: .5rem;
+    transform : translate(50%, 50%);
+  }
+
+  .register .heading {
+      color: #94DD26;
+      text-align: center;
+      margin-top: 120px;
+      text-decoration: none;
+      font-size: 32px;
+      font-weight: bold;
+      border-radius: 1rem;
   }
   
   .register .row .image{
-    flex:1 1 5rem;
+    flex: 1rem;
   }
   
   .register .row .image img{
-    height: 80%;
-    width: 80%;
+    height: 100%;
+    width: 100%;
     object-fit: contain;
     border-radius: .5rem;
   }
   
   .register .row form{
-    flex:1 1 40rem;
     padding:5rem;
   }
   
@@ -48,14 +57,14 @@
   }
   
   .register .row form .inputBox input, .login .row form textarea{
-    padding:1rem;
-    margin: .5rem 0;
+    padding:2rem;
+    margin: 1rem 0;
     font-size: 1.7rem;
     color:#333;
     text-transform: none;
     border:.1rem solid rgba(0,0,0,.3);
     border-radius: .5rem;
-    width: 65%;
+    width: 90%;
   }
   
   .register .row form textarea{
@@ -65,13 +74,16 @@
   }
   
   .register .row form .btn{
-    background:none;
+    padding:1rem;
+    margin: 2rem 0;
+    background:#94DD26;
     font-weight:bold;
     text-transform: uppercase;
+    cursor: pointer;
   }
   
   .register .row form .btn:hover{
-    background:var(--brown);
+    background:#fff;
   }
   /* register ends */
   
