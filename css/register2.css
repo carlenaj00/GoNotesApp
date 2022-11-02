@@ -1,7 +1,7 @@
 * {box-sizing: border-box;}
 /* Full-width input fields */
 input[type=text], input[type=password] {
-    width: 50%;
+    width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
@@ -53,13 +53,12 @@ input[type=text], input[type=password] {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 80%; /* Full height */
+    width: 50%; /* Full width */
+    height: 85%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: #474e5d;
-    padding-top: 1rem;
+    padding-top: 3rem;
   }
   
   /* Modal Content/Box */
