@@ -1,7 +1,7 @@
 
 var firebaseConfig = {
   apiKey: "AIzaSyC7QsgDD3h64YbI1ICjnio3impaU15VC_Q",
-  authDomain: "gonotes-9dc50.firebaseapp.com",
+  authDomain: "https://gonotesapp.netlify.app/",
   projectId: "gonotes-9dc50",
   storageBucket: "gonotes-9dc50.appspot.com",
   messagingSenderId: "407954421672",
@@ -27,10 +27,6 @@ function register () {
     return 
     // Don't continue running the code
   }
-  if (validate_field(full_name) == false || validate_field(favourite_song) == false || validate_field(milk_before_cereal) == false) {
-    alert('One or More Extra Fields is Outta Line!!')
-    return
-  }
   
   // Move on with Auth
   auth.createUserWithEmailAndPassword(email, password)
@@ -51,7 +47,7 @@ function register () {
     // Push to Firebase Database
     database_ref.child('users/' + user.uid).set(user_data)
 
-    // DOne
+    // Done
     alert('User Created!!')
   })
   .catch(function(error) {
@@ -92,7 +88,7 @@ function login () {
     // Push to Firebase Database
     database_ref.child('users/' + user.uid).update(user_data)
 
-    // DOne
+    // Done
     alert('User Logged In!!')
 
   })
