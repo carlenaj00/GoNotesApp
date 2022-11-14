@@ -1,0 +1,89 @@
+@charset "UTF-8";
+/*  
+                                           
+   _____ _       _              _____  _____ _____ 
+  / ___/| (•)   | |           / ____// ____/ ____/  v 4.0.5
+ | (___ | |_  __| | ___ ____ | |    | (___| (___  
+  \___ \| | |/ _` |/ _ / __/ | |     \___ \ ___ \ 
+  ____) | | | (_| |  __\__ \ | |____ ____) |___) |
+ /_____/|_|_|\__,_|\___/___/  \_____/_____/_____/                               
+                                            
+
+*/
+/* CSS RESET */
+
+/* register starts */
+.register .row{
+    padding:1rem;
+    width: 50%;
+    box-shadow: 0 .5rem 1rem #94DD26;
+    background:rgb(238, 238, 238);
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+    border-radius: .5rem;
+    transform : translate(50%, 50%);
+  }
+
+  .register .heading {
+      color: #94DD26;
+      text-align: center;
+      margin-top: 120px;
+      text-decoration: none;
+      font-size: 32px;
+      font-weight: bold;
+      border-radius: 1rem;
+  }
+  
+  .register .row .image{
+    flex: 1rem;
+  }
+  
+  .register .row .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    border-radius: .5rem;
+  }
+  
+  .register .row form{
+    padding:5rem;
+  }
+  
+  .register .row form .inputBox{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .register .row form .inputBox input, .login .row form textarea{
+    padding:2rem;
+    margin: 1rem 0;
+    font-size: 1.7rem;
+    color:#333;
+    text-transform: none;
+    border:.1rem solid rgba(0,0,0,.3);
+    border-radius: .5rem;
+    width: 90%;
+  }
+  
+  .register .row form textarea{
+    width:100%;
+    resize: none;
+    height:15rem;
+  }
+  
+  .register .row form .btn{
+    padding:1rem;
+    margin: 2rem 0;
+    background:#94DD26;
+    font-weight:bold;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  
+  .register .row form .btn:hover{
+    background:#fff;
+  }
+  /* register ends */
+  
