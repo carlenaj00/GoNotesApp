@@ -1,67 +1,68 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+import { app as firebase } from './firebaseConfig'
 
-var firebaseConfig = {
-  apiKey: "AIzaSyC7QsgDD3h64YbI1ICjnio3impaU15VC_Q",
-  authDomain: "gonotes-9dc50.firebaseapp.com",
-  databaseURL: "https://gonotes-9dc50-default-rtdb.firebaseio.com",
-  projectId: "gonotes-9dc50",
-  storageBucket: "gonotes-9dc50.appspot.com",
-  messagingSenderId: "407954421672",
-  appId: "1:407954421672:web:f35a574930d6d30dfc8f9d",
-  measurementId: "G-BNZSG4G6HF"
-};
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth'
+import { getFirestore, setDoc, doc, collection, onSnapshot } from 'firebase/firestore'
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const admin = require("firebase-admin");
- 
+const auth = getAuth(firebase)
+const googleAuthProvider = new GoogleAuthProvider()
 
-document.getElementById('reg-btn').addEventListener('click ', function(){
-  document.getElementById('register-div').style.display="inline";
-  document.getElementById('login-div').style.display ="none";
-});
+const loginBtn = document.querySelector('.login')
+const logoutBtn = document.querySelector('.logout')
+const section = document.querySelector('section')
 
-document.getElementById('login-btn').addEventListener('click ', function(){
-  document.getElementById('register-div').style.display="none";
-  document.getElementById('login-div').style.display ="inline";
-});
+loginBtn.addEventListener('click', () => {
+  signInWithPopup(auth, googleAuthProvider)
+    .then(auth => console.log(auth))
+})
 
-
-//Login Section
-document.getElementById('login-btn').addEventListener('click ', function(){
-  const loginEmail= document.getElementById('login-email').value;
-  const loginPassword= document.getElementById('login-password').value;
-
-  signInWithEmailAndPassword(auth, loginEmail, loginPassword).then((userCredential)=> {
-    const user = userCredential.user; 
-    document.getElementById('login-div').style.display ="none";
-
+logoutBtn.addEventListener('click', () => {
+  signOut(auth).then(() => {
+    console.log('logged out')
   })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    document.getElementById('login-div').style.display ="none";
+})
+
+onAuthStateChanged(auth, user => {
+  if (user) {
+    loginBtn.classList.remove('show')
+    logoutBtn.classList.add('show')
+    document.querySelector('h3').innerHTML = ''
+  } else {
+    logoutBtn.classList.remove('show')
+    loginBtn.classList.add('show')
+  }
+})
+
+// firestore section
+
+const db = getFirestore(firebase)
+
+const colRef = collection(db, 'todos')
+
+const form = document.querySelector('form')
+const input = document.querySelector('input')
+const h3 = document.querySelector('h3')
+
+form.addEventListener('submit', async e => {
+  e.preventDefault()
+
+  const docRef = doc(colRef)
+
+  if (auth.currentUser) {
+    await setDoc(docRef, {
+      todoContent: input.value
+    })
+  } else {
+    h3.textContent = 'please log in'
+  }
+})
+
+onSnapshot(colRef, col => {
+
+  section.innerHTML = ''
+
+  col.forEach(doc => {
+    section.innerHTML += `<div>
+          <p>${doc.data().todoContent}</p>
+      </div>`
   });
-   
-});
-
-
-// Register Section 
-document.getElementById('reg-btn').addEventListener('click ', function(){
-  const registerEmail= document.getElementById('register-email').value;
-  const registerPassword= document.getElementById('register-password').value;
-
-  createUserWithEmailAndPassword(auth, registerEmail, registerPassword).then((userCredential)=> {
-    const user = userCredential.user; 
-    document.getElementById('register-div').style.display ="none";
-
-  })
-  .catch((error) => {
-    const errorCode = error.code; 
-    const errorMessage = error.message;
-    document.getElementById('register-div').style.display ="none";
-  })
-   
-});
+})
