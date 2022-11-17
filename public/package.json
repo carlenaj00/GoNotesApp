@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "firebase": "^9.6.0",
+    "firebase-tools": "^11.16.1",
+    "moment": "^2.29.4",
+    "node": "^19.1.0"
+  }
+}
