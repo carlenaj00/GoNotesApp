@@ -436,6 +436,7 @@
 
     document.querySelector("#register").addEventListener("click", () => {
       register();
+      console.log("User created");
     });
 
     //register when you hit the enter key
@@ -446,6 +447,7 @@
           e.preventDefault();
 
           register();
+          console.log("User created");
         }
       });
 
@@ -464,6 +466,7 @@
 
     document.querySelector("#login").addEventListener("click", () => {
       login();
+      console.log("User logged in");
     });
 
     //sign in when you hit enter
@@ -474,6 +477,7 @@
           e.preventDefault();
 
           login();
+          console.log("User logged in");
         }
       });
 
@@ -494,21 +498,11 @@
     auth.onAuthStateChanged((firebaseUser) => {
       if (firebaseUser) {
         window.location = './notes-home.html';
+        console.log("User logged in");
       }
     });
 
-    /*const signOut = () => {
-      firebase
-        .auth()
-        .signOut()
-        .then(function () {
-          location.reload();
-        })
-        .catch(function (error) {
-          alert("error signing out, check network connection");
-        });
-    };
-
+    /*
     document
       .querySelector("#forgot-password")
       .addEventListener("click", () => {
