@@ -2583,9 +2583,9 @@ html.mobile .showForMobileInline {
   width: 320px;
   max-width: 90%;
   height: 100%;
-  color: #fff;
+  color: rgb(0, 0, 0);
   z-index: 500;
-  background: #0E0E0E;
+  background: #ffffff;
   transition: visibility 0s, -webkit-transform 0.5s;
   transition: transform 0.5s, visibility 0s;
   transition: transform 0.5s, visibility 0s, -webkit-transform 0.5s;
