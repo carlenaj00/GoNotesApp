@@ -37,7 +37,7 @@
   <header class="header">
 
   </header>
-  
+
   <!--
   <div class="sidenav">
     <a href="#about">Notes</a>
@@ -92,75 +92,94 @@
     </div>
     <label class="nav" for="home">
       <span>
-        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
         Notes
       </span>
     </label>
-  
+
     <input name="nav" type="radio" class="about-radio" id="about" />
     <div class="pages about-pages">
       <div class="pages-contents">
-        <h1>Reminders</h1>
-        <p>Amet consectetur adipisicing elit. Sed ipsam ad exercitationem, quo quae ullam, quidem laudantium corporis quis minima debitis nesciunt repellat. Quos dolore ex quis voluptas, minus ut?</p>
+        <!-- Reminder Section -->
+        <h1 style="font-weight: bold;"> Reminders</h1>
+        <hr />
+        <h2 style="display: inline-block; padding-right: 30px; margin: 5rem;">Reminder Text</h2>
+        <h2 style="display: inline-block;">& Time</h3>
+          <section id="enter">
+            <input style="width:50%;" type="text" autofocus id="reminderText" />
+            <!-- <input type="text" autofocus id="reminderTime" /> -->
+            <input type="button" value="+" onClick="reminders.create(input.value)" />
+          </section>
+          <!-- partial -->
+          <script src="./reminders-script.js"></script>
       </div>
     </div>
     <label class="nav" for="about">
       <span>
-      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>
-      Reminders
-        </span>
-      </label>
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12" y2="17"></line>
+        </svg>
+        Reminders
+      </span>
+    </label>
 
-      <form align="right" name="form1" method="post" action="/index.html">
-        <label class="logoutLblPos">
+    <form align="right" name="form1" method="post" action="/index.html">
+      <label class="logoutLblPos">
         <input name="submit2" type="submit" id="signOut" value="Log Out">
-        </label>
-      </form>
-  
-  <!-- Loading Progress Bar -->
-  <div class="progress-bar blue"></div>
+      </label>
+    </form>
 
-  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <!-- Loading Progress Bar -->
+    <div class="progress-bar blue"></div>
 
-  <script type="module">
-    //import firebase from 'firebase/compat/app';
-    //import 'firebase/compat/auth';
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
 
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyC7QsgDD3h64YbI1ICjnio3impaU15VC_Q",
-      authDomain: "gonotes-9dc50.web.app",
-      databaseURL: "https://gonotes-9dc50-default-rtdb.firebaseio.com",
-      projectId: "gonotes-9dc50",
-      storageBucket: "gonotes-9dc50.appspot.com",
-      messagingSenderId: "407954421672",
-      appId: "1:407954421672:web:f35a574930d6d30dfc8f9d",
-      measurementId: "G-BNZSG4G6HF"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
+    <script type="module">
+      //import firebase from 'firebase/compat/app';
+      //import 'firebase/compat/auth';
 
-    const signOut = () => {
-      firebase
-        .auth()
-        .signOut()
-        .then(function () {
-          location = '/index.html';
-          alert("User logged out");
-        })
-        .catch(function (error) {
-          alert("error signing out, check network connection");
-        });
-    };
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyC7QsgDD3h64YbI1ICjnio3impaU15VC_Q",
+        authDomain: "gonotes-9dc50.web.app",
+        databaseURL: "https://gonotes-9dc50-default-rtdb.firebaseio.com",
+        projectId: "gonotes-9dc50",
+        storageBucket: "gonotes-9dc50.appspot.com",
+        messagingSenderId: "407954421672",
+        appId: "1:407954421672:web:f35a574930d6d30dfc8f9d",
+        measurementId: "G-BNZSG4G6HF"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
 
-    document.querySelector("#signOut").addEventListener("click", () => {
-      signOut();
-    });
+      const signOut = () => {
+        firebase
+          .auth()
+          .signOut()
+          .then(function () {
+            location = '/index.html';
+            alert("User logged out");
+          })
+          .catch(function (error) {
+            alert("error signing out, check network connection");
+          });
+      };
 
-  </script>
-  <script src="notespage.js"></script>
+      document.querySelector("#signOut").addEventListener("click", () => {
+        signOut();
+      });
+
+    </script>
+    <script src="notespage.js"></script>
 
 </body>
 
