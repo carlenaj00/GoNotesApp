@@ -19,7 +19,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background:#FBC108;
+    background:#ffffff;
     padding:1rem 9%;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
   }
