@@ -437,7 +437,7 @@
         alert("Enter Password");
       } else {
         authenticate(email, password);
-        window.location = '/notes-home.html';
+        //window.location = '/notes-home.html';
         //alert("User logged in");
       }
     };
@@ -472,7 +472,7 @@
 
     auth.onAuthStateChanged((firebaseUser) => {
       if (firebaseUser) {
-        //window.location = './notes-home.html';
+        window.location = './notes-home.html';
         console.log("User logged in");
       }
     });
