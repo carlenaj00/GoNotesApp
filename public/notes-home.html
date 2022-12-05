@@ -77,11 +77,11 @@
               <form action="#">
                 <div class="row title">
                   <label>Title</label>
-                  <input type="text" spellcheck="false">
+                  <input type="text" id="title" spellcheck="false">
                 </div>
                 <div class="row description">
                   <label>Description</label>
-                  <textarea spellcheck="false"></textarea>
+                  <textarea id="description" spellcheck="false"></textarea>
                 </div>
                 <button></button>
               </form>
@@ -119,26 +119,23 @@
       </span>
     </label>
 
-    <form align="right" name="form1" method="post" action="/index.html">
-      <label class="logoutLblPos">
-        <input name="submit2" type="submit" id="signOut" value="Log Out">
-      </label>
-    </form>
+
+    <button align="right" style="background-color: gray; color: white" id="logout" type="submit">Log Out</button>
 
     <!-- Loading Progress Bar -->
     <div class="progress-bar blue"></div>
 
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
 
     <script type="module">
       //import firebase from 'firebase/compat/app';
       //import 'firebase/compat/auth';
-
       // Your web app's Firebase configuration
       var firebaseConfig = {
         apiKey: "AIzaSyC7QsgDD3h64YbI1ICjnio3impaU15VC_Q",
-        authDomain: "gonotes-9dc50.web.app",
+        authDomain: "gonotes-9dc50.firebaseapp.com",
         databaseURL: "https://gonotes-9dc50-default-rtdb.firebaseio.com",
         projectId: "gonotes-9dc50",
         storageBucket: "gonotes-9dc50.appspot.com",
@@ -149,24 +146,34 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       const auth = firebase.auth();
+      var user = auth.currentUser.uid;
+      var firestore = firebase.firestore();
 
-      const signOut = () => {
-        firebase
-          .auth()
-          .signOut()
-          .then(function () {
-            location = '/index.html';
-            alert("User logged out");
-          })
-          .catch(function (error) {
-            alert("error signing out, check network connection");
-          });
-      };
+      const db = firestore.collection("users").doc(user.uid);
 
-      document.querySelector("#signOut").addEventListener("click", () => {
-        signOut();
+      document.getElementById("logout").addEventListener("click", () => {
+        signOutUser();
       });
 
+      const signOutUser = () => {
+        firebase.auth().signOut().then(() => {
+          this.setState({
+            user: null
+          })
+          this.props.history.push("/");
+        }).catch(function (error) {
+          alert("error signing out, check network connection");
+        });
+      }
+
+      auth.onAuthStateChanged((user) => {
+        if (user != null) {
+          console.log(user.email + " is logged in!");
+        } else {
+          console.log('User is logged out!');
+          location.replace('/');
+        }
+      });
     </script>
     <script src="notespage.js"></script>
 
